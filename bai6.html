@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function findKthLargest(arr, k) {
+        arr.sort((a, b) => b - a);
+        return arr[k - 1];
+    }
+    let arr = [3, 2, 1, 5, 6, 4];
+    let k = 2;
+    let kthLargest = findKthLargest(arr, k);
+    console.log(kthLargest);
+</script>
+</body>
+</html>

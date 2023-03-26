@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function findClosestSum(arr, target) {
+        // Sắp xếp mảng theo thứ tự tăng dần
+        arr.sort((a, b) => a - b);
+
+        let left = 0;
+        let right = arr.length - 1;
+        let closestSum = Infinity;
+        while (left < right) {
+            let sum = arr[left] + arr[right];
+            let diff = Math.abs(target - sum);
+            if (diff === 0) {
+                return sum;
+            }
+            if (diff < Math.abs(target - closestSum)) {
+                closestSum = sum;
+            }
+            if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return closestSum;
+    }
+    let arr = [1, 2, 3, 4, 5, 6];
+    let target = 6;
+    let closestSum = findClosestSum(arr, target);
+    console.log(`Tổng gần nhất với ${target} là ${closestSum}`);
+</script>
+</body>
+</html>

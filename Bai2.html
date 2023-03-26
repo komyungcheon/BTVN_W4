@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    function findTriplet(arr, targetSum) {
+        arr.sort((a, b) => a - b);
+        const n = arr.length;
+        for (let i = 0; i < n - 2; i++) {
+            let left = i + 1, right = n - 1;
+            while (left < right) {
+                const currentSum = arr[i] + arr[left] + arr[right];
+                if (currentSum === targetSum) {
+                    return [arr[i], arr[left], arr[right]];
+                } else if (currentSum < targetSum) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+        return null;
+    }
+    const arr = [3, 1, 5, 8, 2, 4, 7];
+    const targetSum = 14;
+    const triplet = findTriplet(arr, targetSum);
+    if (triplet) {
+        console.log(`Found triplet: [${triplet}]`);
+    } else {
+        console.log("No triplet found.");
+    }
+
+</script>
